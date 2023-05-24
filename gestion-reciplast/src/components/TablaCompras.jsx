@@ -17,6 +17,7 @@ import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
+import "../componentsStyles.css";
 
 function createData(descripcion, id, fecha, total, proveedor) {
   return {
@@ -92,8 +93,8 @@ function Row(props) {
                   <TableRow>
                     <TableCell align="center">Producto</TableCell>
                     <TableCell align="center">Descripcion</TableCell>
-                    <TableCell align="center">P/U</TableCell>
-                    <TableCell align="center">Cantidad</TableCell>
+                    <TableCell align="center">Precio por kg</TableCell>
+                    <TableCell align="center">Cantidad (kg)</TableCell>
                     <TableCell align="center">Total ($)</TableCell>
 
                   </TableRow>
@@ -123,7 +124,7 @@ function Row(props) {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="center">
-                <Button variant="outlined" onClick={() => setShowModal(true)}>Imprimir</Button>
+                <button className='Button' onClick={() => setShowModal(true)}>Imprimir</button>
               </Grid>
               {/* <div>
                 <button type="button" onClick={() => setShowModal(true)}>

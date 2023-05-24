@@ -1,4 +1,3 @@
-
 import Navegacion from "../../components/Navegacion";
 
 import { useState } from "react";
@@ -123,21 +122,37 @@ function ModificarCliente() {
   var handleSuccess = () => {
     console.log("success");
   };
+
+  const [showModal2, setShowModal2] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose2 = () => setShowModal2(false);
+
+  var handleSuccess2 = () => {
+    console.log("success");
+  };
+
   return (
     <>
       <div className="Page">
-        <div style={{ width: "100%", paddingBottom: "30px" }}>
+        <div className="ParteSuperior">
+          <div style={{ padding: "0px 0px 20px 20px" }}>
+            <Navegacion />
+          </div>
           <h1 style={{ margin: "0" }}>MODIFICAR CLIENTE</h1>
-          <Navegacion />
         </div>
         <div className="Caja">
           <Datos />
         </div>
-        <div style={{ textAlign: "right", width: "90%" }}>
+        <div style={{ textAlign: "right", width: "85%" }}>
           {" "}
-          <button className="Button">GUARDAR</button>
           <button className="Button" onClick={() => setShowModal(true)}>
             CANCELAR
+          </button>
+          <button className="Button" onClick={() => setShowModal2(true)}>
+            GUARDAR
           </button>
           <div>
             <Modal
@@ -163,6 +178,34 @@ function ModificarCliente() {
                     Cancelar
                   </button>
                   <button className="primary-button" onClick={handleSuccess}>
+                    Aceptar
+                  </button>
+                </div>
+              </div>
+            </Modal>
+            <Modal
+              className="modal"
+              show={showModal2}
+              onHide={handleClose2}
+              renderBackdrop={renderBackdrop2}
+            >
+              <div>
+                <div className="modal-header">
+                  <div className="modal-title">Confirmar cambios</div>
+                  <div>
+                    <span className="close-button" onClick={handleClose2}>
+                      x
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-desc">
+                  <p>¿Desea guardar los cambios?</p>
+                </div>
+                <div className="modal-footer">
+                  <button className="secondary-button" onClick={handleClose2}>
+                    Cancelar
+                  </button>
+                  <button className="primary-button" onClick={handleSuccess2}>
                     Aceptar
                   </button>
                 </div>

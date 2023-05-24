@@ -15,9 +15,11 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import "../componentsStyles.css";
 
-function createData(name, fecha, compras) {
+function createData(id, name, fecha, compras) {
     return {
+        id, 
         name,
         fecha,
         compras,
@@ -46,11 +48,20 @@ function Row(props) {
                 <TableCell component="th" scope="row">
                     <Checkbox />
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" align="center">
+                    {row.id}
+                </TableCell>
+                <TableCell component="th" scope="row" align="center">
                     {row.name}
                 </TableCell>
-                <TableCell align="right">{row.fecha}</TableCell>
-                <TableCell align="right">{row.compras}</TableCell>
+                <TableCell align="center">{row.fecha}</TableCell>
+                <TableCell align="center">{row.compras}</TableCell>
+                <TableCell align="center">
+                    <NavLink to="/detalles-proveedor">
+                        <button  className='Button'>
+                            Detalle
+                        </button></NavLink>
+                </TableCell>
                 <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
@@ -93,9 +104,9 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="center">
                                                 <NavLink to="/detalle-compra">
-                                                <Button variant="outlined" size="medium">
+                                                <button className='Button'>
                                                     Detalle
-                                                </Button></NavLink>
+                                                </button></NavLink>
                                             </TableCell>
                     
 
@@ -114,16 +125,16 @@ function Row(props) {
 
 
 const rows = [
-    createData('Jorge Gonzalez', '02/05/2023', 99),
-    createData('Sixto Arrejin', '01/06/2023', 91),
-    createData('Tobias Maciel Meister', '17/06/2023', 2),
-    createData('Nilson', '19/06/2023', 99),
-    createData('María García', '05/05/2023', 78),
-    createData('Luisa Fernández', '11/06/2023', 85),
-    createData('Andrés Ramírez', '29/05/2023', 73),
-    createData('Carolina Soto', '07/06/2023', 88),
-    createData('Pedro Martínez', '15/06/2023', 69),
-    createData('Sofía Rodríguez', '20/06/2023', 95)
+    createData(123, 'Jorge Gonzalez', '02/05/2023', 99),
+    createData(234, 'Sixto Arrejin', '01/06/2023', 91),
+    createData(345, 'Tobias Maciel Meister', '17/06/2023', 2),
+    createData(456, 'Nilson', '19/06/2023', 99),
+    createData(567, 'María García', '05/05/2023', 78),
+    createData(678, 'Luisa Fernández', '11/06/2023', 85),
+    createData(789,'Andrés Ramírez', '29/05/2023', 73),
+    createData(654,'Carolina Soto', '07/06/2023', 88),
+    createData(264,'Pedro Martínez', '15/06/2023', 69),
+    createData(624,'Sofía Rodríguez', '20/06/2023', 95)
 ];
 
 export default function TablaProveedores() {
@@ -134,10 +145,12 @@ export default function TablaProveedores() {
                     <TableHead>
                         <TableRow>
                             <TableCell> </TableCell>
-                            <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Compras</Typography></TableCell>
-                            <TableCell align="center"><Typography variant="h6" color="initial">Ver compras</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Compras</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

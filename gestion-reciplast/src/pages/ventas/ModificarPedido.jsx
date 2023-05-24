@@ -7,18 +7,22 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+import Modal from "react-overlays/Modal";
+import "../../Modal.css";
+import { useState } from "react";
+
 function Datos() {
-  let [dni, setdni] = React.useState("");
-  let [nombre, setnombre] = React.useState("");
-  let [direccion, setdireccion] = React.useState("");
-  let [localidad, setlocalidad] = React.useState("");
-  let [provincia, setprovincia] = React.useState("");
-  let [telefono, settelefono] = React.useState("");
-  let [email, setemail] = React.useState("");
+  let [dni, setdni] = React.useState("44826086");
+  let [nombre, setnombre] = React.useState("Tobias Alejandro Maciel Meister");
+  let [direccion, setdireccion] = React.useState("Poncho Verde 2345");
+  let [localidad, setlocalidad] = React.useState("Corrientes");
+  let [provincia, setprovincia] = React.useState("Corrientes");
+  let [telefono, settelefono] = React.useState("3794992109");
+  let [email, setemail] = React.useState("tobiasmaciel@gmail.com");
 
   const handleDniChange = (event) => {
     setdni(event.target.value);
-    if (dni == "4482608") {
+    if (dni == "4482608212112") {
       setnombre("Tobias Alejandro Maciel Meister");
       setdireccion("Poncho Verde 2345");
       setlocalidad("Corrientes");
@@ -140,6 +144,7 @@ function DatosPedido() {
                 id="date"
                 label="Fecha de entrega estimada"
                 type="date"
+                defaultValue={"2017-05-29"}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -152,7 +157,28 @@ function DatosPedido() {
     </React.Fragment>
   );
 }
-function RegistrarPedido() {
+function ModificarPedido() {
+  const [showModal, setShowModal] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose = () => setShowModal(false);
+
+  var handleSuccess = () => {
+    console.log("success");
+  };
+
+  const [showModal2, setShowModal2] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose2 = () => setShowModal2(false);
+
+  var handleSuccess2 = () => {
+    console.log("success");
+  };
   return (
     <>
       <div className="Page">
@@ -160,7 +186,7 @@ function RegistrarPedido() {
           <div style={{ padding: "0px 0px 20px 20px" }}>
             <Navegacion />
           </div>
-          <h1 style={{ margin: "0" }}>REGISTRAR PEDIDO</h1>
+          <h1 style={{ margin: "0" }}>MODIFICAR PEDIDO</h1>
         </div>
         <div className="Caja">
           <h3 style={{ marginLeft: 5, textAlign: "left" }}>
@@ -178,8 +204,70 @@ function RegistrarPedido() {
           </div>{" "}
           <div style={{ textAlign: "right", width: "100%" }}>
             {" "}
-            <button className="Button">GUARDAR</button>
-            <button className="Button">CANCELAR</button>
+            <button className="Button" onClick={() => setShowModal(true)}>
+              CANCELAR
+            </button>
+            <button className="Button" onClick={() => setShowModal2(true)}>
+              GUARDAR
+            </button>
+            <div>
+              <Modal
+                className="modal"
+                show={showModal}
+                onHide={handleClose}
+                renderBackdrop={renderBackdrop}
+              >
+                <div>
+                  <div className="modal-header">
+                    <div className="modal-title">Confirmar Cancelación</div>
+                    <div>
+                      <span className="close-button" onClick={handleClose}>
+                        x
+                      </span>
+                    </div>
+                  </div>
+                  <div className="modal-desc">
+                    <p>¿Desea cancelar?</p>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="secondary-button" onClick={handleClose}>
+                      Cancelar
+                    </button>
+                    <button className="primary-button" onClick={handleSuccess}>
+                      Aceptar
+                    </button>
+                  </div>
+                </div>
+              </Modal>
+              <Modal
+                className="modal"
+                show={showModal2}
+                onHide={handleClose2}
+                renderBackdrop={renderBackdrop2}
+              >
+                <div>
+                  <div className="modal-header">
+                    <div className="modal-title">Confirmar cambios</div>
+                    <div>
+                      <span className="close-button" onClick={handleClose2}>
+                        x
+                      </span>
+                    </div>
+                  </div>
+                  <div className="modal-desc">
+                    <p>¿Desea guardar los cambios?</p>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="secondary-button" onClick={handleClose2}>
+                      Cancelar
+                    </button>
+                    <button className="primary-button" onClick={handleSuccess2}>
+                      Aceptar
+                    </button>
+                  </div>
+                </div>
+              </Modal>
+            </div>
           </div>
         </div>
       </div>
@@ -187,4 +275,4 @@ function RegistrarPedido() {
   );
 }
 
-export default RegistrarPedido;
+export default ModificarPedido;

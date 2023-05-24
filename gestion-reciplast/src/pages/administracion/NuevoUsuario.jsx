@@ -27,6 +27,7 @@ import Navegacion from "../../components/Navegacion";
 import Modal from "react-overlays/Modal";
 import "../../Modal.css";
 import CssBaseline from "@mui/material/CssBaseline";
+import "../../componentsStyles.css";
 
 function Datos() {
   return (
@@ -264,13 +265,12 @@ function NuevoUsuario() {
         >
           <div style={{ paddingRight: "10px" }}>
             {" "}
-            <Button
-              variant="contained"
-              color="success"
+            <button
+              className="Button"
               onClick={() => setShowModal(true)}
             >
-              Registrar
-            </Button>
+              Cancelar
+            </button>
           </div>
 
           <Modal
@@ -281,7 +281,7 @@ function NuevoUsuario() {
           >
             <div>
               <div className="modal-header">
-                <div className="modal-title">Registrar Nuevo Producto</div>
+                <div className="modal-title">Cancelar registro</div>
                 <div>
                   <span className="close-button" onClick={handleClose}>
                     x
@@ -303,9 +303,9 @@ function NuevoUsuario() {
           </Modal>
 
           {/* <button type="submit">Registrar</button> */}
-          <Button variant="outlined" onClick={() => setShowModal2(true)}>
-            Cancelar
-          </Button>
+          <button className="Button" onClick={() => setShowModal2(true)}>
+            Registrar
+          </button>
           {/* <button type="button">Cancelar</button> */}
           <Modal
             className="modal"
@@ -315,7 +315,7 @@ function NuevoUsuario() {
           >
             <div>
               <div className="modal-header">
-                <div className="modal-title">Cancelar Registro</div>
+                <div className="modal-title">Registrar Nuevo Producto</div>
                 <div>
                   <span className="close-button" onClick={handleClose2}>
                     x
@@ -323,7 +323,7 @@ function NuevoUsuario() {
                 </div>
               </div>
               <div className="modal-desc">
-                <p>¿Esta seguro que quiere cancelar el registro?</p>
+                <p>¿Esta seguro de realizar dicha acción?</p>
               </div>
               <div className="modal-footer">
                 <button className="secondary-button" onClick={handleClose2}>

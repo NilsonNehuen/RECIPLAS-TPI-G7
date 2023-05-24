@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { Checkbox } from '@mui/material';
+import {Checkbox} from '@mui/material';
 
 // Datos de ejemplo
 const rows = [
@@ -80,19 +80,18 @@ export default function TablaProductosFabricados() {
           <TableHead>
             <TableRow>
               <TableCell align="center"> </TableCell>
-              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Id</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>
               <TableCell align="center">Cant. Minima&nbsp;(g)</TableCell>
               <TableCell align="center">Cant. Actual&nbsp;(g)</TableCell>
-              <TableCell align="center"> </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row" >
-                  <Checkbox />
+                    <Checkbox />
                 </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   {row.name}
@@ -101,14 +100,6 @@ export default function TablaProductosFabricados() {
                 <TableCell align="left">{row.fat}</TableCell>
                 <TableCell align="center">{row.carbs}</TableCell>
                 <TableCell align="center">{row.protein}</TableCell>
-                <TableCell align="center"><Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => handleClick()}
-                >
-                  Detalles
-                </Button></TableCell>
-
               </TableRow>
             ))}
           </TableBody>

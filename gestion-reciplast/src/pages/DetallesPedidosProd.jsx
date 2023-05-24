@@ -1,18 +1,20 @@
-import Navegacion from "../../components/Navegacion";
-import TablaListadoDeProductos from "../../components/TablaListadoDeProductos";
+
+import Navegacion from "../components/Navegacion";
+import TablaListadoDeProductos from "../components/TablaListadoDeProductos";
 
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "../../Modal.css";
 
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
+
+import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
 import Modal from "react-overlays/Modal";
 import { useState } from "react";
@@ -145,36 +147,53 @@ function DatosPedido() {
               <TextField
                 fullWidth
                 disabled
-                id="date"
+                id="DNICliente"
                 label="Fecha de pedido"
-                type="date"
-                defaultValue={"2017-05-24"}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                defaultValue="17/03/2023"
               />
             </Grid>
             <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
-                id="Horadepedido"
-                label="Hora de pedido"
-                defaultValue="18:46"
+                id="DNICliente"
+                label="DNI"
+                defaultValue="32000900"
               />
             </Grid>
             <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
-                id="date"
-                label="Fecha de entrega estimada"
-                type="date"
-                defaultValue={"2017-05-29"}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                id="DireccionCliente"
+                label="Dirección"
+                defaultValue="Calle Rivadavia 4200"
               />
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl>
+                <FormLabel id="demo-form-control-label-placement">
+                  Estado
+                </FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-form-control-label-placement"
+                  name="position"
+                  defaultValue="En fabricación"
+                >
+                  <FormControlLabel
+                    value="En fabricación"
+                    defaultChecked
+                    control={<Radio />}
+                    label="En fabricación"
+                  />
+                  <FormControlLabel
+                    value="Pendiente de entrega"
+                    control={<Radio />}
+                    label="Pendiente de entrega"
+                  />
+                </RadioGroup>
+              </FormControl>
             </Grid>
           </Grid>
         </Box>
@@ -184,7 +203,7 @@ function DatosPedido() {
   );
 }
 
-function DetallesPedidos() {
+function DetallesPedidosProd() {
   const [showModal, setShowModal] = useState(false);
 
   // Backdrop JSX code
@@ -195,17 +214,26 @@ function DetallesPedidos() {
   var handleSuccess = () => {
     console.log("success");
   };
+
+  const [showModal2, setShowModal2] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose2 = () => setShowModal2(false);
+
+  var handleSuccess2 = () => {
+    console.log("success");
+  };
+
   return (
     <>
       <div className="Page">
-        <div className="ParteSuperior">
-          <div style={{ padding: "0px 0px 20px 20px" }}>
-            <Navegacion />
-          </div>
-          <h1 style={{ margin: "0" }}>DETALLES DE PEDIDO</h1>
+        <div style={{ width: "100%", paddingBottom: "30px" }}>
+          <h1 style={{ margin: "0" }}>DETALLES DE PEDIDOS</h1>
+          <Navegacion />
         </div>
         <div className="Caja">
-          <h3 style={{ marginLeft: 5, textAlign: "left" }}>Datos de cliente</h3>
           <Datos />
         </div>
         <div className="Caja">
@@ -227,13 +255,10 @@ function DetallesPedidos() {
             <TextField disabled id="FechaRegistro" defaultValue="11060" />
           </div>
         </div>
-        <div style={{ textAlign: "right", width: "85%" }}>
+        <div style={{ textAlign: "right", width: "90%" }}>
           {" "}
-          <button className="Button" onClick={() => setShowModal(true)}>
-            CANCELAR
-          </button>
-          <button className="Button">MODIFICAR</button>
-          <button className="Button">FACTURAR</button>
+          <button className="Button" onClick={() => setShowModal(true)}>GUARDAR</button>
+          <button className="Button" onClick={() => setShowModal2(true)}>IMPRIMIR</button>
           <div>
             <Modal
               className="modal"
@@ -243,7 +268,7 @@ function DetallesPedidos() {
             >
               <div>
                 <div className="modal-header">
-                  <div className="modal-title">Confirmar Cancelación</div>
+                  <div className="modal-title">Confirmar los cambios</div>
                   <div>
                     <span className="close-button" onClick={handleClose}>
                       x
@@ -251,13 +276,41 @@ function DetallesPedidos() {
                   </div>
                 </div>
                 <div className="modal-desc">
-                  <p>¿Desea cancelar al cliente?</p>
+                  <p>¿Esta seguro de realizar dicha acción?</p>
                 </div>
                 <div className="modal-footer">
                   <button className="secondary-button" onClick={handleClose}>
                     Cancelar
                   </button>
                   <button className="primary-button" onClick={handleSuccess}>
+                    Aceptar
+                  </button>
+                </div>
+              </div>
+            </Modal>
+            <Modal
+              className="modal"
+              show={showModal2}
+              onHide={handleClose2}
+              renderBackdrop={renderBackdrop2}
+            >
+              <div>
+                <div className="modal-header">
+                  <div className="modal-title">Imprimir pedido</div>
+                  <div>
+                    <span className="close-button" onClick={handleClose2}>
+                      x
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-desc">
+                  <p>¿Seguro que desea imprimir?</p>
+                </div>
+                <div className="modal-footer">
+                  <button className="secondary-button" onClick={handleClose2}>
+                    Cancelar
+                  </button>
+                  <button className="primary-button" onClick={handleSuccess2}>
                     Aceptar
                   </button>
                 </div>
@@ -270,4 +323,4 @@ function DetallesPedidos() {
   );
 }
 
-export default DetallesPedidos;
+export default DetallesPedidosProd;

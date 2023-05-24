@@ -1,22 +1,24 @@
+import Navegacion from "../../components/Navegacion";
+
+import { useState } from "react";
+import Modal from "react-overlays/Modal";
+
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import TablaHistorial from "../../components/TablaHistorial";
-import Navegacion from "../../components/Navegacion";
 
-import Modal from "react-overlays/Modal";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-import dayjs from "dayjs";
-
-function RegistrarPedido() {
+function Datos() {
   return (
     <React.Fragment>
       <CssBaseline />
       <div style={{ display: "inline", width: "100%", height: "100%" }}>
+        <div>
+          <h3 style={{ marginLeft: 5, textAlign: "left" }}>
+            Datos del Proveedor
+          </h3>
+        </div>
         <Box
           sx={{
             padding: "20px",
@@ -32,25 +34,25 @@ function RegistrarPedido() {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="NyACliente"
-                label="Nombre y Apellido"
+                label="Nombre"
                 defaultValue="Nilson"
               />
             </Grid>
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="DNICliente"
-                label="DNI"
+                label="CUIL/CUIT"
                 defaultValue="32000900"
               />
             </Grid>
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="DireccionCliente"
                 label="Dirección"
                 defaultValue="Calle Rivadavia 4200"
@@ -59,7 +61,7 @@ function RegistrarPedido() {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="LocalidadCliente"
                 label="Localidad"
                 defaultValue="Fontana"
@@ -68,7 +70,7 @@ function RegistrarPedido() {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="ProvinciaCliente"
                 label="Provincia"
                 defaultValue="Chaco"
@@ -77,7 +79,7 @@ function RegistrarPedido() {
             <Grid item xs={3}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="TelefonoCliente"
                 label="Telefono"
                 defaultValue="3624 00000"
@@ -86,7 +88,7 @@ function RegistrarPedido() {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                disabled
+                enable
                 id="EmailCliente"
                 label="Correo Electronico"
                 defaultValue="nilson.nehuen@ca.frre.utn.edu.ar"
@@ -96,13 +98,9 @@ function RegistrarPedido() {
               <TextField
                 fullWidth
                 disabled
-                id="date"
-                label="Fecha de registro"
-                type="date"
-                defaultValue={"2017-05-24"}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                id="FechaRegistro"
+                label="Fecha Registro"
+                defaultValue="11/05/2023"
               />
             </Grid>
           </Grid>
@@ -113,7 +111,7 @@ function RegistrarPedido() {
   );
 }
 
-function DetallesCliente() {
+function ModificarProveedor() {
   const [showModal, setShowModal] = useState(false);
 
   // Backdrop JSX code
@@ -124,6 +122,18 @@ function DetallesCliente() {
   var handleSuccess = () => {
     console.log("success");
   };
+
+  const [showModal2, setShowModal2] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose2 = () => setShowModal2(false);
+
+  var handleSuccess2 = () => {
+    console.log("success");
+  };
+
   return (
     <>
       <div className="Page">
@@ -131,18 +141,18 @@ function DetallesCliente() {
           <div style={{ padding: "0px 0px 20px 20px" }}>
             <Navegacion />
           </div>
-          <h1 style={{ margin: "0" }}>DETALLES DE CLIENTE</h1>
+          <h1 style={{ margin: "0" }}>MODIFICAR PROVEEDOR</h1>
         </div>
         <div className="Caja">
-          <RegistrarPedido />
+          <Datos />
         </div>
         <div style={{ textAlign: "right", width: "85%" }}>
           {" "}
-          <NavLink to="/modificar-cliente">
-            <button className="Button">MODIFICAR</button>
-          </NavLink>
           <button className="Button" onClick={() => setShowModal(true)}>
-            ELIMINAR
+            CANCELAR
+          </button>
+          <button className="Button" onClick={() => setShowModal2(true)}>
+            GUARDAR
           </button>
           <div>
             <Modal
@@ -153,7 +163,7 @@ function DetallesCliente() {
             >
               <div>
                 <div className="modal-header">
-                  <div className="modal-title">Confirmar Eliminación</div>
+                  <div className="modal-title">Confirmar Cancelación</div>
                   <div>
                     <span className="close-button" onClick={handleClose}>
                       x
@@ -161,7 +171,7 @@ function DetallesCliente() {
                   </div>
                 </div>
                 <div className="modal-desc">
-                  <p>¿Desea eliminar al cliente?</p>
+                  <p>¿Desea cancelar?</p>
                 </div>
                 <div className="modal-footer">
                   <button className="secondary-button" onClick={handleClose}>
@@ -173,15 +183,39 @@ function DetallesCliente() {
                 </div>
               </div>
             </Modal>
+            <Modal
+              className="modal"
+              show={showModal2}
+              onHide={handleClose2}
+              renderBackdrop={renderBackdrop2}
+            >
+              <div>
+                <div className="modal-header">
+                  <div className="modal-title">Confirmar cambios</div>
+                  <div>
+                    <span className="close-button" onClick={handleClose2}>
+                      x
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-desc">
+                  <p>¿Desea guardar los cambios?</p>
+                </div>
+                <div className="modal-footer">
+                  <button className="secondary-button" onClick={handleClose2}>
+                    Cancelar
+                  </button>
+                  <button className="primary-button" onClick={handleSuccess2}>
+                    Aceptar
+                  </button>
+                </div>
+              </div>
+            </Modal>
           </div>
-        </div>
-        {/* Aca va la tabla */}
-        <div className="Caja">
-          <TablaHistorial />
         </div>
       </div>
     </>
   );
 }
 
-export default DetallesCliente;
+export default ModificarProveedor;

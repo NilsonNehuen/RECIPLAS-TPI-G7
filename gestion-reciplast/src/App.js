@@ -43,11 +43,15 @@ import ModificarCliente from "./pages/ventas/ModificarCliente";
 import RegistrarPedido from "./pages/ventas/RegistrarPedido";
 import ListadoPedidos2 from "./pages/ventas/ListadoPedidos2";
 import ListadoProductosFabricados from "./pages/ListadoProductosFabricados";
-
+import ListadoProductosFabricadosAdm from "./pages/administracion/ListadoProductosFabricadosAdm";
+import DetallesPedidosProd from "./pages/DetallesPedidosProd";
+import IngresosMP from "./pages/IngresosMP";
+import DetallesProveedor from "./pages/ventas/DetallesProveedor";
+import ModificarProveedor from "./pages/ventas/ModificarProveedor";
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "ingreso-materia-prima" } ]} ,
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
 
@@ -62,7 +66,7 @@ const areasData = {
 			  
 	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
 					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
-					{ nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
+					{ nombre: 'Productos fabricados', link: "productos-fabricados-adm", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
 																														{nombre: "Agregar", link: "registrar-producto" } ]},
 					{ nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
 					{ nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
@@ -135,8 +139,9 @@ function App() {
 			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
 			  <Route path="materias-primas/listado" element={<ListadoMP />} />
-			  <Route path="materias-primas/agregar" element={<Modals />} />
+			  <Route path="materias-primas/agregar" element={<ProductosFabricados />} />
 			  <Route path="productos-fabricados" element={<ListadoProductosFabricados />} />
+			  <Route path="productos-fabricados-adm" element={<ListadoProductosFabricadosAdm />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />
 			  <Route path="modificar-stock-producto" element={<ProductosFabricados/>} />
@@ -154,7 +159,12 @@ function App() {
 				<Route path="modificar-cliente" element={<ModificarCliente />} />
 				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
 				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
+				<Route path="detalles-pedidos-prod" element={<DetallesPedidosProd />} />
 				<Route path="detalles-cliente" element={<DetallesCliente />} />
+				<Route path="ingreso-materia-prima" element={<IngresosMP />} />
+				<Route path="detalles-proveedor" element={<DetallesProveedor />} />
+				<Route path="modificar-proveedor" element={<ModificarProveedor />} />
+				
 				
 
 

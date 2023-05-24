@@ -17,6 +17,7 @@ import dayjs from "dayjs";
 
 import Navegacion from "../../components/Navegacion";
 import Modal from "react-overlays/Modal";
+import "../../componentsStyles.css";
 
 function FechaInput(props) {
   return (
@@ -45,7 +46,13 @@ function DatosPedido() {
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
             <Grid item xs={4}>
-              <FechaInput nombre="Fecha de pedido" id="FechaPedido" />
+              <TextField
+                fullWidth
+                disabled
+                id="FechaPedido"
+                label="Fecha de pedido"
+                defaultValue="12/03/2023"
+              />
             </Grid>
             <Grid item xs={4}>
               <TextField
@@ -118,9 +125,9 @@ function DetalleVenta() {
           }}
         >
           {" "}
-          <Button variant="outlined" onClick={() => setShowModal(true)}>
+          <button className="Button" onClick={() => setShowModal(true)}>
             Imprimir
-          </Button>
+          </button>
         </div>
         <Modal
           className="modal"

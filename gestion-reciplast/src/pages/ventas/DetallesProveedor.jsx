@@ -34,7 +34,7 @@ function RegistrarPedido() {
                 fullWidth
                 disabled
                 id="NyACliente"
-                label="Nombre y Apellido"
+                label="Nombre"
                 defaultValue="Nilson"
               />
             </Grid>
@@ -43,7 +43,7 @@ function RegistrarPedido() {
                 fullWidth
                 disabled
                 id="DNICliente"
-                label="DNI"
+                label="CUIL/CUIT"
                 defaultValue="32000900"
               />
             </Grid>
@@ -113,7 +113,7 @@ function RegistrarPedido() {
   );
 }
 
-function DetallesCliente() {
+function DetallesProveedor() {
   const [showModal, setShowModal] = useState(false);
 
   // Backdrop JSX code
@@ -131,14 +131,14 @@ function DetallesCliente() {
           <div style={{ padding: "0px 0px 20px 20px" }}>
             <Navegacion />
           </div>
-          <h1 style={{ margin: "0" }}>DETALLES DE CLIENTE</h1>
+          <h1 style={{ margin: "0" }}>DETALLES DE PROVEEDOR</h1>
         </div>
         <div className="Caja">
           <RegistrarPedido />
         </div>
         <div style={{ textAlign: "right", width: "85%" }}>
           {" "}
-          <NavLink to="/modificar-cliente">
+          <NavLink to="/modificar-proveedor">
             <button className="Button">MODIFICAR</button>
           </NavLink>
           <button className="Button" onClick={() => setShowModal(true)}>
@@ -161,7 +161,7 @@ function DetallesCliente() {
                   </div>
                 </div>
                 <div className="modal-desc">
-                  <p>¿Desea eliminar al cliente?</p>
+                  <p>¿Desea eliminar al proveedor?</p>
                 </div>
                 <div className="modal-footer">
                   <button className="secondary-button" onClick={handleClose}>
@@ -184,4 +184,4 @@ function DetallesCliente() {
   );
 }
 
-export default DetallesCliente;
+export default DetallesProveedor;

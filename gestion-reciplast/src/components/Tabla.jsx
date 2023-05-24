@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Checkbox } from '@mui/material';
 
 
 
@@ -20,7 +21,7 @@ const rows = [
   { name: '6738991', calories: "Poliestireno (PS)", fat: "Es un plástico rígido y transparente utilizado en la fabricación de vasos", carbs: 37, protein: 4.3 },
   { name: '6732344', calories: "Polipropileno expandido (PPE)", fat: "se utiliza en la fabricación de productos como bandejas de alimentos, envases protectores", carbs: 24, protein: 6.0 },
   { name: '6238111', calories: "Policarbonato (PC)", fat: "Es un plástico transparente y resistente ", carbs: 24, protein: 6.0 }
-  
+
 ];
 
 
@@ -58,12 +59,13 @@ export default function Tabla() {
       <div style={{ paddingBottom: '50px' }}>
         <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       </div>
-
+      
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center">Id</TableCell>
+              <TableCell align="center"> </TableCell>
+              <TableCell align="center">ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>
               <TableCell align="center">Cant. Minima&nbsp;(g)</TableCell>
@@ -73,6 +75,9 @@ export default function Tabla() {
           <TableBody>
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
+                <TableCell component="th" scope="row" >
+                    <Checkbox />
+                </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   {row.name}
                 </TableCell>
