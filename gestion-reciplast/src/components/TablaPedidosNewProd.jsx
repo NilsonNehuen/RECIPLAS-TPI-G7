@@ -35,12 +35,12 @@ function Buscador({ searchTerm, onSearchTermChange }) {
 
 
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar ID"
-    />
+    <Grid container xs={3}>
+      <TextField
+            fullWidth
+            label="Buscar ID"
+        />
+    </Grid>
   );
 }
 
@@ -72,7 +72,7 @@ export default function TablaPedidosNew() {
 
   return (
     <div style={{ width: '100%', padding: '10px' }}>
-      <div style={{ paddingBottom: '50px' }}>
+      <div style={{ paddingBottom: '30px' }}>
         <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       </div>
 

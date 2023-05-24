@@ -54,7 +54,7 @@ function Row(props) {
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-                <TableCell component="th" scope="row" >
+                <TableCell align="center" >
                     <Checkbox />
                 </TableCell>
                 <TableCell component="th" scope="row" align="center">
@@ -68,7 +68,7 @@ function Row(props) {
                 <TableCell align="center">{row.compras}</TableCell>
                 <TableCell align="center">
                     <NavLink to="/detalles-cliente">
-                        <button  className='Button'>
+                        <button className='Button'>
                             Detalle
                         </button></NavLink>
                 </TableCell>
@@ -114,7 +114,7 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="center">
                                                 <NavLink to="/detalle-venta">
-                                                    <button  className='Button'>
+                                                    <button className='Button'>
                                                         Detalle
                                                     </button></NavLink>
                                             </TableCell>
@@ -154,7 +154,10 @@ export default function TablaClientes() {
                 <Table aria-label="collapsible table">
                     <TableHead>
                         <TableRow>
-                            <TableCell> </TableCell>
+                            <TableCell align="center">
+                                <Button color="info" size="small" variant="outlined">Todos</Button>
+                                {/* <button className='Button'>Select all</button>   */}
+                            </TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Tipo</Typography></TableCell>

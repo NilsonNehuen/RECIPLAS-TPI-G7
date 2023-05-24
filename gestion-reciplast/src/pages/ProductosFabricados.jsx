@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Fustavo from "../imagenes/Hasbulla.jpg";
+import Producto from "../imagenes/botella.jpg";
 import CampoValor from "../components/CampoValor";
 import { Button } from "@mui/material";
 import "../componentsStyles.css";
@@ -48,11 +48,10 @@ export default function ProductosFabricados() {
           >
             <div style={{ width: "30%", paddingRight: "20px" }}>
               <img
-                src={Fustavo}
-                alt="meñique"
+                src={Producto}
+                alt="producto"
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  height: "350px",
                   objectFit: "cover",
                   overflow: "hidden",
                 }}
@@ -168,7 +167,7 @@ export default function ProductosFabricados() {
         >
           <div>
             <div className="modal-header">
-              <div className="modal-title">INGRESO</div>
+              <div className="modal-title"> </div>
               <div>
                 <span className="close-button" onClick={handleClose}>
                   x
@@ -176,7 +175,7 @@ export default function ProductosFabricados() {
               </div>
             </div>
             <div className="modal-desc">
-              <p>La cantidad de nuevos productos es.</p>
+              <p>Cantidad del producto: </p>
               <input
                 type="text"
                 value={cantidad}
@@ -185,10 +184,10 @@ export default function ProductosFabricados() {
             </div>
             <div className="modal-footer">
               <button className="secondary-button" onClick={handleClose}>
-                Close
+                Cancelar
               </button>
               <button className="primary-button" onClick={handleSuccess}>
-                Save Changes
+                Confirmar
               </button>
             </div>
           </div>

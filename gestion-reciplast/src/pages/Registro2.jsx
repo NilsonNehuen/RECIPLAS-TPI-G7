@@ -80,7 +80,7 @@ function InputAdornments ({nombre, contrasena, setContrasena}) {
 
 
   
-  function Registro2({ accion, usuarios, handleArea }) {
+  function Registro2({ accion, usuarios, handleArea, setUsuario1 }) {
     const navigate = useNavigate();
   
     const [usuario, setUsuario] = useState('');
@@ -91,6 +91,7 @@ function InputAdornments ({nombre, contrasena, setContrasena}) {
       if (usuarioEncontrado && usuarioEncontrado.contrasena === contrasena ) {
         accion(true);
         handleArea(usuarioEncontrado.area);
+        setUsuario1(usuarioEncontrado.nombre);
         navigate('/');
       }
     };

@@ -28,7 +28,7 @@ function BuscadorID() {
 
 function createData(id, name, fecha, compras) {
     return {
-        id, 
+        id,
         name,
         fecha,
         compras,
@@ -54,7 +54,7 @@ function Row(props) {
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-                <TableCell component="th" scope="row">
+                <TableCell align="center">
                     <Checkbox />
                 </TableCell>
                 <TableCell component="th" scope="row" align="center">
@@ -67,7 +67,7 @@ function Row(props) {
                 <TableCell align="center">{row.compras}</TableCell>
                 <TableCell align="center">
                     <NavLink to="/detalles-proveedor">
-                        <button  className='Button'>
+                        <button className='Button'>
                             Detalle
                         </button></NavLink>
                 </TableCell>
@@ -113,11 +113,11 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="center">
                                                 <NavLink to="/detalle-compra">
-                                                <button className='Button'>
-                                                    Detalle
-                                                </button></NavLink>
+                                                    <button className='Button'>
+                                                        Detalle
+                                                    </button></NavLink>
                                             </TableCell>
-                    
+
 
                                         </TableRow>
                                     ))}
@@ -140,10 +140,10 @@ const rows = [
     createData(456, 'Nilson', '19/06/2023', 99),
     createData(567, 'María García', '05/05/2023', 78),
     createData(678, 'Luisa Fernández', '11/06/2023', 85),
-    createData(789,'Andrés Ramírez', '29/05/2023', 73),
-    createData(654,'Carolina Soto', '07/06/2023', 88),
-    createData(264,'Pedro Martínez', '15/06/2023', 69),
-    createData(624,'Sofía Rodríguez', '20/06/2023', 95)
+    createData(789, 'Andrés Ramírez', '29/05/2023', 73),
+    createData(654, 'Carolina Soto', '07/06/2023', 88),
+    createData(264, 'Pedro Martínez', '15/06/2023', 69),
+    createData(624, 'Sofía Rodríguez', '20/06/2023', 95)
 ];
 
 export default function TablaProveedores() {
@@ -158,7 +158,10 @@ export default function TablaProveedores() {
                 <Table aria-label="collapsible table">
                     <TableHead>
                         <TableRow>
-                            <TableCell> </TableCell>
+                            <TableCell align="center">
+                                <Button color="info" size="small" variant="outlined">Todos</Button>
+                                {/* <button className='Button'>Select all</button>   */}
+                            </TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>

@@ -102,10 +102,10 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell component="th" scope="row">
+        <TableCell align="center">
           <Checkbox />
         </TableCell>
-        <TableCell component="th" scope="row" align="center" >
+        <TableCell align="center" >
           {row.fecha}
         </TableCell>
         <TableCell align="center">{row.id}</TableCell>
@@ -142,7 +142,7 @@ function Row(props) {
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.name}>
-                      <TableCell component="th" scope="row" align="left">
+                      <TableCell align="center">
                         {historyRow.name}
                       </TableCell>
                       <TableCell align="center">
@@ -265,12 +265,12 @@ function Row(props) {
 
 
 const rows = [
-  createData('Polietileno de baja densidad (PEBD)', 9999, "02/03/2023", 2400, "proveedor"),
-  createData('Compras para administación', 237, "15/03/2023", 2374, "proveedor"),
-  createData('Utiles para área ventas', 3465, "15/03/2023", 6543, "proveedor"),
-  createData('Polietileno tereftalato (PET)', 235677, "15/03/2023", 3600, "proveedor"),
-  createData('Poliestireno (PS)', 6587, "15/03/2023", 5000, "Rocco"),
-  createData('Polietileno tereftalato (PET)', 95238, "15/03/2023", 2463, "proveedor"),
+  createData('Polietileno de baja densidad (PEBD)', 91287, "02/03/2023", 2400, "Plastic Solutions"),
+  createData('Compras para administración', 12435, "15/03/2023", 2374, "Office Supply Co."),
+  createData('Utiles para área ventas', 87654, "15/03/2023", 6543, "Sales Essentials"),
+  createData('Polietileno tereftalato (PET)', 54321, "15/03/2023", 3600, "Plastic Manufacturing Inc."),
+  createData('Poliestireno (PS)', 6587, "15/03/2023", 5000, "Styrene Solutions"),
+  createData('Polietileno tereftalato (PET)', 95238, "15/03/2023", 2463, "Plastic Packaging Ltd."),
 ];
 
 export default function TablaCompras() {
@@ -292,7 +292,10 @@ export default function TablaCompras() {
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-              <TableCell ><Typography variant="h6" color="initial"> </Typography></TableCell>
+            <TableCell align="center">
+                <Button color="info" size="small" variant="outlined">Todos</Button>
+                {/* <button className='Button'>Select all</button>   */}
+              </TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Proveedor</Typography></TableCell>

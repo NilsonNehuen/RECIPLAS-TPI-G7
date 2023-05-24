@@ -76,21 +76,21 @@ export default function Tabla() {
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>
-              <TableCell align="center">Cant. Minima&nbsp;(g)</TableCell>
-              <TableCell align="center">Cant. Actual&nbsp;(g)</TableCell>
+              <TableCell align="center">Cant. Minima&nbsp;(kg)</TableCell>
+              <TableCell align="center">Cant. Actual&nbsp;(kg)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row" >
+                <TableCell align="center">
                   <Checkbox />
                 </TableCell>
-                <TableCell align="left" component="th" scope="row">
+                <TableCell align="center">
                   {row.name}
                 </TableCell>
-                <TableCell align="left">{row.calories}</TableCell>
-                <TableCell align="left">{row.fat}</TableCell>
+                <TableCell align="center">{row.calories}</TableCell>
+                <TableCell align="center">{row.fat}</TableCell>
                 <TableCell align="center">{row.carbs}</TableCell>
                 <TableCell align="center">{row.protein}</TableCell>
               </TableRow>

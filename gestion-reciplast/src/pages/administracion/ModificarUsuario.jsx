@@ -334,7 +334,7 @@ function ModificarUsuario() {
                             </div>
                             <div className="modal-footer">
                                 <button className="secondary-button" onClick={handleClose2}>
-                                    Volver
+                                    Cancelar
                                 </button>
                                 <button className="primary-button" onClick={handleSuccess2}>
                                     Aceptar

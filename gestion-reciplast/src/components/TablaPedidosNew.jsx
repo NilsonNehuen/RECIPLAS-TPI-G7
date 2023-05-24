@@ -7,10 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { Checkbox } from '@mui/material';
+import { Checkbox, TextField } from '@mui/material';
 import "../componentsStyles.css";
 
 // Datos de ejemplo
@@ -30,17 +30,14 @@ const rows = [
 // Componente del buscador
 function Buscador({ searchTerm, onSearchTermChange }) {
 
-
-
-
-
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar ID"
-    />
+    <Grid container xs={3}>
+      <TextField
+            fullWidth
+            label="Buscar ID"
+        />
+    </Grid>
+    
   );
 }
 
@@ -72,7 +69,7 @@ export default function TablaPedidosNew() {
 
   return (
     <div style={{ width: '100%', padding: '10px' }}>
-      <div style={{ paddingBottom: '50px' }}>
+      <div style={{ paddingBottom: '30px' }}>
         <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       </div>
 

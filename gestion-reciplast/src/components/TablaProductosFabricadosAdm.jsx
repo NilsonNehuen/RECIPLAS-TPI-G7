@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import {Checkbox} from '@mui/material';
+import {Checkbox, TextField, Grid} from '@mui/material';
 
 // Datos de ejemplo
 const rows = [
@@ -26,20 +26,20 @@ const rows = [
 ];
 
 
+
 // Componente del buscador
 function Buscador({ searchTerm, onSearchTermChange }) {
 
-
-
-
-
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar ID"
-    />
+    <Grid container xs={3} >
+      <TextField
+        fullWidth
+        type="number"
+        value={searchTerm}
+        onChange={(e) => onSearchTermChange(e.target.value)}
+        placeholder="Buscar ID"
+      />
+    </Grid>
   );
 }
 
@@ -71,15 +71,19 @@ export default function TablaProductosFabricados() {
 
   return (
     <div style={{ width: '100%', padding: '10px' }}>
-      <div style={{ paddingBottom: '50px' }}>
+      <div style={{ paddingBottom: '30px' }}>
         <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       </div>
 
       <TableContainer component={Paper}>
+        
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center"> </TableCell>
+            <TableCell align="center">
+                <Button color="info" size="small" variant="outlined">Todos</Button>
+                {/* <button className='Button'>Select all</button>   */}
+              </TableCell>
               <TableCell align="center">Id</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>
@@ -90,14 +94,14 @@ export default function TablaProductosFabricados() {
           <TableBody>
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row" >
+                <TableCell align="center" >
                     <Checkbox />
                 </TableCell>
-                <TableCell align="left" component="th" scope="row">
+                <TableCell align="center">
                   {row.name}
                 </TableCell>
-                <TableCell align="left">{row.calories}</TableCell>
-                <TableCell align="left">{row.fat}</TableCell>
+                <TableCell align="center">{row.calories}</TableCell>
+                <TableCell align="center">{row.fat}</TableCell>
                 <TableCell align="center">{row.carbs}</TableCell>
                 <TableCell align="center">{row.protein}</TableCell>
               </TableRow>

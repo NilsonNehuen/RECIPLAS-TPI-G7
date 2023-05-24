@@ -32,7 +32,7 @@ function Usuarios() {
         <div className="Page">
           <div className="ParteSuperior">
             <div style={{ padding: "0px 0px 20px 20px" }}><Navegacion/></div>
-            <h1 style={{ margin: "0" }}>USUARIOS RECIPLAST</h1>
+            <h1 style={{ margin: "0" }}>LISTA DE USUARIOS</h1>
           </div>
           <div className="Caja">
             <CssBaseline />

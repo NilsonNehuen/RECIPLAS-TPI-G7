@@ -296,7 +296,7 @@ function NuevoUsuario() {
                   Cancelar
                 </button>
                 <button className="primary-button" onClick={handleSuccess}>
-                  Registrar
+                  Aceptar
                 </button>
               </div>
             </div>
@@ -315,7 +315,7 @@ function NuevoUsuario() {
           >
             <div>
               <div className="modal-header">
-                <div className="modal-title">Registrar Nuevo Producto</div>
+                <div className="modal-title">Registrar nuevo usuario</div>
                 <div>
                   <span className="close-button" onClick={handleClose2}>
                     x
@@ -327,7 +327,7 @@ function NuevoUsuario() {
               </div>
               <div className="modal-footer">
                 <button className="secondary-button" onClick={handleClose2}>
-                  Volver
+                  Cancelar
                 </button>
                 <button className="primary-button" onClick={handleSuccess2}>
                   Aceptar
