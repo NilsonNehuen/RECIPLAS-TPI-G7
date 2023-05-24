@@ -1,0 +1,152 @@
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Grid, TextField, Button, Checkbox } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+
+function createData(name, fecha, compras) {
+    return {
+        name,
+        fecha,
+        compras,
+        history: [
+            {
+                fecha: "07/03/2023",
+                id: 2345,
+                total: 3587,
+            },
+            {
+                fecha: "08/04/2023",
+                id: 3452,
+                total: 3453,
+            },
+        ],
+    };
+}
+
+function Row(props) {
+    const { row } = props;
+    const [open, setOpen] = React.useState(false);
+
+    return (
+        <React.Fragment>
+            <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+                <TableCell component="th" scope="row">
+                    <Checkbox />
+                </TableCell>
+                <TableCell component="th" scope="row">
+                    {row.name}
+                </TableCell>
+                <TableCell align="right">{row.fecha}</TableCell>
+                <TableCell align="right">{row.compras}</TableCell>
+                <TableCell align="center">
+                    <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() => setOpen(!open)}
+                    >
+                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    </IconButton>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+
+                        {/* Detalle de cada fila */}
+                        <Box sx={{ margin: 1 }}>
+                            <Typography variant="h6" gutterBottom component="div">
+                                Compras realizadas al proveedor
+                            </Typography>
+                            <Table size="small" aria-label="purchases">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center">Fecha</TableCell>
+                                        <TableCell align="center">Id</TableCell>
+                                        <TableCell align="center">Total ($)</TableCell>
+
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {row.history.map((historyRow) => (
+                                        <TableRow key={historyRow.id}>
+                                            <TableCell component="th" scope="row" align="center">
+                                                {historyRow.fecha}
+                                            </TableCell>
+                                            <TableCell component="th" scope="row" align="center">
+                                                {historyRow.id}
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                {historyRow.total}
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                <NavLink to="/detalle-compra">
+                                                <Button variant="outlined" size="medium">
+                                                    Detalle
+                                                </Button></NavLink>
+                                            </TableCell>
+                    
+
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+
+                        </Box>
+                    </Collapse>
+                </TableCell>
+            </TableRow>
+        </React.Fragment>
+    );
+}
+
+
+const rows = [
+    createData('Jorge Gonzalez', '02/05/2023', 99),
+    createData('Sixto Arrejin', '01/06/2023', 91),
+    createData('Tobias Maciel Meister', '17/06/2023', 2),
+    createData('Nilson', '19/06/2023', 99),
+    createData('María García', '05/05/2023', 78),
+    createData('Luisa Fernández', '11/06/2023', 85),
+    createData('Andrés Ramírez', '29/05/2023', 73),
+    createData('Carolina Soto', '07/06/2023', 88),
+    createData('Pedro Martínez', '15/06/2023', 69),
+    createData('Sofía Rodríguez', '20/06/2023', 95)
+];
+
+export default function TablaProveedores() {
+    return (
+        <Grid>
+            <TableContainer component={Paper}>
+                <Table aria-label="collapsible table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell> </TableCell>
+                            <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
+                            <TableCell align="right"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
+                            <TableCell align="right"><Typography variant="h6" color="initial">Compras</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Ver compras</Typography></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <Row key={row.name} row={row} />
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Grid>
+    );
+}
