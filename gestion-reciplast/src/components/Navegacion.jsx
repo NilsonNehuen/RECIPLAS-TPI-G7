@@ -12,14 +12,14 @@ export default function Navegacion() {
     <div role="presentation" onClick={handleClick} style={{padding: '5px'}} >
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
-          Materia Prima
+          Pagina 1
         </Link>
         <Link
           underline="hover"
           color="inherit"
           href="/material-ui/getting-started/installation/"
         >
-          Agregar
+          Pagina 2
         </Link>
         <Link
           underline="hover"
@@ -27,7 +27,7 @@ export default function Navegacion() {
           href="/material-ui/react-breadcrumbs/"
           aria-current="page"
         >
-          Breadcrumbs
+          Pagina 3
         </Link>
       </Breadcrumbs>
     </div>

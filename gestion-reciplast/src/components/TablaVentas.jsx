@@ -18,6 +18,43 @@ import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
 
+function BuscadorID() {
+    return (
+        <TextField
+            fullWidth
+            label="Buscar ID"
+        />
+    );
+}
+function BuscadorFI() {
+    return (
+        <TextField
+            fullWidth
+            id="date"
+            label="Desde..."
+            type="date"
+            defaultValue="2017-05-24"
+            InputLabelProps={{
+                shrink: true,
+            }}
+        />
+    );
+}
+function BuscadorFC() {
+    return (
+        <TextField
+            fullWidth
+            id="date"
+            label="Hasta..."
+            type="date"
+            defaultValue="2017-05-24"
+            InputLabelProps={{
+                shrink: true,
+            }}
+        />
+    );
+}
+
 function createData(descripcion, id, fecha, total, cliente) {
     return {
         descripcion,
@@ -48,13 +85,17 @@ function Row(props) {
 
     const [showModal, setShowModal] = useState(false);
 
+    const [showModal1, setShowModal1] = useState(false);
+
     // Backdrop JSX code
     const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
     var handleClose = () => setShowModal(false);
 
-    var handleSuccess = () => {
-        console.log("success");
+    var handleClose1 = () => setShowModal1(false);
+
+    const handlePrint = () => {
+        setShowModal(true);
     };
 
     return (
@@ -123,7 +164,14 @@ function Row(props) {
                                 direction="row"
                                 justifyContent="flex-end"
                                 alignItems="center">
-                                <Button variant="outlined" onClick={() => setShowModal(true)}>Imprimir</Button>
+                                <button
+                                    className="Button"
+                                    onClick={() => {
+                                        setShowModal(true);
+                                    }}
+                                >
+                                    IMPRIMIR
+                                </button>
                             </Grid>
                             {/* <div>
                 <button type="button" onClick={() => setShowModal(true)}>
@@ -139,7 +187,6 @@ function Row(props) {
                             >
                                 <div>
                                     <div className="modal-header">
-                                        <div className="modal-title">Imprimir Venta</div>
                                         <div>
                                             <span className="close-button" onClick={handleClose}>
                                                 x
@@ -147,18 +194,59 @@ function Row(props) {
                                         </div>
                                     </div>
                                     <div className="modal-desc">
-                                        <p>¿Seguro que desea imprimir?</p>
+                                        <p>¿Seguro desea imprimir?</p>
                                     </div>
                                     <div className="modal-footer">
                                         <button className="secondary-button" onClick={handleClose}>
                                             Cancelar
                                         </button>
-                                        <button className="primary-button" onClick={handleSuccess}>
-                                            Imprimir
+                                        <button
+                                            className="primary-button"
+                                            onClick={() => setShowModal1(true)}
+                                        >
+                                            Aceptar
                                         </button>
+                                        <Modal
+                                            className="modal"
+                                            show={showModal1}
+                                            onHide={handleClose}
+                                            renderBackdrop={renderBackdrop}
+                                        >
+                                            <div>
+                                                <div className="modal-header">
+                                                    <div>
+                                                        <span
+                                                            className="close-button"
+                                                            onClick={() => {
+                                                                setShowModal1(false);
+                                                                setShowModal(false);
+                                                            }}
+                                                        >
+                                                            x
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="modal-desc">
+                                                    <p>Se ha impreso con éxito</p>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button
+                                                        className="primary-button"
+                                                        onClick={() => {
+                                                            setShowModal1(false);
+                                                            setShowModal(false);
+                                                        }}
+                                                    >
+                                                        Aceptar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Modal>
                                     </div>
                                 </div>
                             </Modal>
+
+
 
                         </Box>
                     </Collapse>
@@ -181,6 +269,17 @@ const rows = [
 export default function TablaVentas() {
     return (
         <Grid>
+            <Grid container direction="row" xs={12}>
+                <div style={{ paddingBottom: '50px', marginRight: "5px" }}>
+                    <BuscadorID />
+                </div>
+                <div style={{ paddingBottom: '50px', marginRight: "5px" }}>
+                    <BuscadorFI />
+                </div>
+                <div style={{ paddingBottom: '50px' }}>
+                    <BuscadorFC />
+                </div>
+            </Grid>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>

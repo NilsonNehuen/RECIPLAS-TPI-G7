@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Checkbox } from '@mui/material';
+import { Checkbox, TextField, Grid, Button } from '@mui/material';
 
 
 
@@ -36,12 +36,17 @@ const rows2 = [
 // Componente del buscador
 function Buscador({ searchTerm, onSearchTermChange }) {
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar ID"
-    />
+    <Grid container xs={3} >
+      <TextField
+        fullWidth
+        type="text"
+        value={searchTerm}
+        onChange={(e) => onSearchTermChange(e.target.value)}
+        placeholder="Buscar ID"
+      />
+    </Grid>
+
+
   );
 }
 
@@ -59,12 +64,15 @@ export default function Tabla() {
       <div style={{ paddingBottom: '50px' }}>
         <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       </div>
-      
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center"> </TableCell>
+              <TableCell align="center">
+                <Button color="info" size="small" variant="outlined">Todos</Button>
+                {/* <button className='Button'>Select all</button>   */}
+              </TableCell>
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>
@@ -76,7 +84,7 @@ export default function Tabla() {
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row" >
-                    <Checkbox />
+                  <Checkbox />
                 </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   {row.name}

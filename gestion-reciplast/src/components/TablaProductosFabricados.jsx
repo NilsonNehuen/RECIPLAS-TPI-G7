@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Button, TextField, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { Checkbox } from '@mui/material';
@@ -35,12 +35,12 @@ function Buscador({ searchTerm, onSearchTermChange }) {
 
 
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar ID"
-    />
+    <TextField
+        fullWidth
+        type="text"
+        value={searchTerm}
+        onChange={(e) => onSearchTermChange(e.target.value)}
+        placeholder="Buscar ID" />
   );
 }
 
@@ -72,15 +72,20 @@ export default function TablaProductosFabricados() {
 
   return (
     <div style={{ width: '100%', padding: '10px' }}>
-      <div style={{ paddingBottom: '50px' }}>
-        <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
-      </div>
+      <Grid container xs={3} marginBottom="30px" >
+      <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
+      
+    </Grid>
+      
 
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center"> </TableCell>
+              <TableCell align="center">
+                <Button color="info" size="small" variant="outlined">Todos</Button>
+                {/* <button className='Button'>Select all</button>   */}
+              </TableCell>
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripcion</TableCell>

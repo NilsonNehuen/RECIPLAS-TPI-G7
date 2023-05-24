@@ -11,8 +11,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import MiImagen from './foto2.png'
-import MiImagen2 from './foto3.jpg'
+import MiImagen from './LogoFinal.png'
+import MiImagen2 from './avatar.png'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 
 const pages = [];
@@ -51,7 +52,7 @@ function BarraSuperior( {accion} ) {
     <AppBar position="static" sx={{ backgroundColor: "#395372" }}>
       <Container maxWidth="x1">
         <Toolbar disableGutters>
-        <img src= {MiImagen} alt="Gestion Reciplas" height={50} sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+        <img src= {MiImagen} alt="Gestion Reciplas" height={35} sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
           
           <Typography
@@ -86,7 +87,7 @@ function BarraSuperior( {accion} ) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Configuración">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Hasbulla" src= {MiImagen2} />
+                <Avatar alt="Hasbulla" src= {<AccountCircleIcon />} />
               </IconButton>
             </Tooltip>
             <Menu

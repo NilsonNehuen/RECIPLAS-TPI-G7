@@ -86,9 +86,10 @@ function TablaMP() {
 
   return (
     <div style={{ height: "85%", width: "100%" }}>
-      <div style={{ display: "flex", padding:"20px"}}>
-        <p style={{paddingRight:"5px"}}>Buscar por ID:</p>
-        <input
+      <div style={{ display: "flex", padding: "20px" }}>
+        <p style={{ paddingRight: "5px" }}>Buscar por ID:</p>
+        <TextField
+          fullWidth
           type="text"
           id="search"
           value={searchId}
@@ -104,7 +105,7 @@ function TablaMP() {
           disableSelectionOnClick
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 10},
+              paginationModel: { page: 0, pageSize: 10 },
             },
           }}
           pageSizeOptions={[10, 20, 100]}

@@ -23,14 +23,14 @@ export default function ComprasRealizadas() {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [showModal1, setShowModal1] = useState(false);
+
   // Backdrop JSX code
   const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
   var handleClose = () => setShowModal(false);
 
-  var handleSuccess = () => {
-    console.log("success");
-  };
+  var handleClose1 = () => setShowModal1(false);
 
   const handlePrint = () => {
     setShowModal(true);
@@ -70,20 +70,64 @@ export default function ComprasRealizadas() {
                 </div>
               </div>
               <div className="modal-desc">
-                <p>¿Seguro desea imprimir?</p>
+                <p>¿Seguro desea registrar el pago?</p>
               </div>
               <div className="modal-footer">
                 <button className="secondary-button" onClick={handleClose}>
                   Cancelar
                 </button>
-                <button className="primary-button" onClick={handleSuccess}>
+                <button
+                  className="primary-button"
+                  onClick={() => setShowModal1(true)}
+                >
                   Aceptar
                 </button>
+                <Modal
+                  className="modal"
+                  show={showModal1}
+                  onHide={handleClose}
+                  renderBackdrop={renderBackdrop}
+                >
+                  <div>
+                    <div className="modal-header">
+                      <div>
+                        <span
+                          className="close-button"
+                          onClick={() => {
+                            setShowModal1(false);
+                            setShowModal(false);
+                          }}
+                        >
+                          x
+                        </span>
+                      </div>
+                    </div>
+                    <div className="modal-desc">
+                      <p>Pago registrado con éxito</p>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        className="primary-button"
+                        onClick={() => {
+                          setShowModal1(false);
+                          setShowModal(false);
+                        }}
+                      >
+                        Aceptar
+                      </button>
+                    </div>
+                  </div>
+                </Modal>
               </div>
             </div>
           </Modal>
 
-          <button className="Button" onClick={handlePrint}>
+          <button
+            className="Button"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
             REGISTRAR PAGO
           </button>
         </div>

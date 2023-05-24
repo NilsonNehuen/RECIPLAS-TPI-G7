@@ -19,7 +19,7 @@ import { Grid } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 const capitalizeFirstLetter = (area) => {
-  return area.charAt(0).toUpperCase() + area.slice(1);
+  return area.toUpperCase();
 };
 
 
@@ -63,8 +63,8 @@ function BarraLateral({ campos, area }) {
                           style={{ color: "black", textDecoration: "none" }}
                         >
                     
-                            <MenuItem  icon={<FiberManualRecordIcon fontSize="small" />}>
-                              {submenu.nombre}
+                            <MenuItem >
+                            • {submenu.nombre}
                             </MenuItem>
                         
                           

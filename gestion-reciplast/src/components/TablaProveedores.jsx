@@ -17,6 +17,15 @@ import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import "../componentsStyles.css";
 
+function BuscadorID() {
+    return (
+        <TextField
+            fullWidth
+            label="Buscar ID"
+        />
+    );
+}
+
 function createData(id, name, fecha, compras) {
     return {
         id, 
@@ -140,6 +149,11 @@ const rows = [
 export default function TablaProveedores() {
     return (
         <Grid>
+            <Grid container direction="row" xs={12}>
+                <div style={{ paddingBottom: '30px', marginRight: "5px" }}>
+                    <BuscadorID />
+                </div>
+            </Grid>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>

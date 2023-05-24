@@ -100,8 +100,8 @@ const areasData = {
 
 
 
-const usuarios = [{ nombre: "Pepe", area: "administracion", contrasena: "pepe" }, { nombre: "Luis", area: "produccion", contrasena: "luis" },
-{ nombre: "Acosta", area: "compras", contrasena: "acosta" }, { nombre: "Nilson", area: "ventas", contrasena: "nilson" }]
+const usuarios = [{ nombre: "Sixto", area: "administracion", contrasena: "sixto" }, { nombre: "Andre", area: "produccion", contrasena: "andre" },
+{ nombre: "Gonzalo", area: "compras", contrasena: "gonzalo" }, { nombre: "Nilson", area: "ventas", contrasena: "nilson" }]
 
 
 

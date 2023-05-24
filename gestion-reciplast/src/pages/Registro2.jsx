@@ -120,7 +120,7 @@ function InputAdornments ({nombre, contrasena, setContrasena}) {
           >
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Rercuérdame"
               style={{ padding: "10px 6px" }}
             />
             <button className="Button" onClick={handleButtonClick}> Iniciar sesión </button>
