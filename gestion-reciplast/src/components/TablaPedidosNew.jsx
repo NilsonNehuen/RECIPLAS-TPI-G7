@@ -15,14 +15,14 @@ import "../componentsStyles.css";
 
 // Datos de ejemplo
 const rows = [
-  { name: '6728901', calories: "Polietileno de baja densidad (PEBD)", fat: "Plástico flexible y resistente", carbs: 24, protein: 4.0 },
-  { name: '6728991', calories: "Polietileno de alta densidad (PEAD)", fat: "Material rígido y duradero", carbs: 37, protein: 4.3 },
-  { name: '6722344', calories: "Polipropileno (PP)", fat: "Plástico versátil que se utiliza en la fabricación de diversos productos plásticos", carbs: 24, protein: 6.0 },
-  { name: '6278111', calories: "Policloruro de vinilo (PVC)", fat: "Plástico resistente al impacto y a la intemperie", carbs: 24, protein: 6.0 },
-  { name: '6738901', calories: "Polietileno tereftalato (PET)", fat: "Es un plástico transparente y resistente utilizado en la fabricación de botellas", carbs: 24, protein: 4.0 },
-  { name: '6738991', calories: "Poliestireno (PS)", fat: "Es un plástico rígido y transparente utilizado en la fabricación de vasos", carbs: 37, protein: 4.3 },
-  { name: '6732344', calories: "Polipropileno expandido (PPE)", fat: "se utiliza en la fabricación de productos como bandejas de alimentos, envases protectores", carbs: 24, protein: 6.0 },
-  { name: '6238111', calories: "Policarbonato (PC)", fat: "Es un plástico transparente y resistente ", carbs: 24, protein: 6.0 }
+  { name: '6728901', nombre: "Polietileno de baja densidad (PEBD)", fecha: "12/12/2022", estado: "En fabricación"},
+  { name: '6728991', nombre: "Polietileno de alta densidad (PEAD)", fecha: "12/12/2022", estado: "Pendiente de entrega"},
+  { name: '6722344', nombre: "Polipropileno (PP)", fecha: "12/12/2022", estado: "En fabricación"},
+  { name: '6278111', nombre: "Policloruro de vinilo (PVC)", fecha: "12/12/2022", estado: "En fabricación"},
+  { name: '6738901', nombre: "Polietileno tereftalato (PET)", fecha: "12/12/2022", estado: "En fabricación"},
+  { name: '6738991', nombre: "Poliestireno (PS)", fecha: "12/12/2022", estado: "Pendiente de entrega"},
+  { name: '6732344', nombre: "Polipropileno expandido (PPE)", fecha: "12/12/2022", estado: "Pendiente de entrega"},
+  { name: '6238111', nombre: "Policarbonato (PC)", fecha: "12/12/2022", estado: "Pendiente de entrega"}
 
 ];
 
@@ -45,7 +45,7 @@ function Buscador({ searchTerm, onSearchTermChange }) {
 }
 
 // Componente de la tabla
-export default function TablaProductosFabricados() {
+export default function TablaPedidosNew() {
   const [searchTerm, setSearchTerm] = useState('');
 
 
@@ -58,7 +58,7 @@ export default function TablaProductosFabricados() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/modificar-stock-producto');
+    navigate('/detalles-pedidos');
   }
 
 
@@ -80,28 +80,29 @@ export default function TablaProductosFabricados() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center"> </TableCell>
+              <TableCell align="center">
+                <Button color="info" size="small" variant="outlined">Todos</Button>
+                {/* <button className='Button'>Select all</button>   */}
+              </TableCell>
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
-              <TableCell align="center">Descripcion</TableCell>
-              <TableCell align="center">Cant. Minima&nbsp;(g)</TableCell>
-              <TableCell align="center">Cant. Actual&nbsp;(g)</TableCell>
+              <TableCell align="center">Fecha</TableCell>
+              <TableCell align="center">Estado</TableCell>
               <TableCell align="center"> </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredRows.map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row" >
+                <TableCell align="left" component="th" scope="row">
                   <Checkbox />
                 </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="left">{row.calories}</TableCell>
-                <TableCell align="left">{row.fat}</TableCell>
-                <TableCell align="center">{row.carbs}</TableCell>
-                <TableCell align="center">{row.protein}</TableCell>
+                <TableCell align="center">{row.nombre}</TableCell>
+                <TableCell align="center">{row.fecha}</TableCell>
+                <TableCell align="center">{row.estado}</TableCell>
                 <TableCell align="center"><button
                   className='Button'
                   onClick={() => handleClick()}

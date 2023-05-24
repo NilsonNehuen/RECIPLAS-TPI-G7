@@ -38,7 +38,7 @@ function Buscador({ searchTerm, onSearchTermChange }) {
       type="text"
       value={searchTerm}
       onChange={(e) => onSearchTermChange(e.target.value)}
-      placeholder="Buscar"
+      placeholder="Buscar ID"
     />
   );
 }

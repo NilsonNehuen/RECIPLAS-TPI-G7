@@ -106,7 +106,7 @@ function InputAdornments ({nombre, contrasena, setContrasena}) {
         }}
       >
         <div className="CajaLogin">
-          <h1 style={{ padding: "20px" }}>Login</h1>
+          <h1 style={{ padding: "20px" }}>Iniciar Sesión</h1>
           <MultilineTextFields nombre={"Usuario"} usuario={usuario} setUsuario={setUsuario} />
           <InputAdornments nombre={"Contraseña"} contrasena={contrasena} setContrasena={setContrasena} />
           <div

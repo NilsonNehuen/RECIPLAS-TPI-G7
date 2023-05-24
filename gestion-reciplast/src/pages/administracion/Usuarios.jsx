@@ -7,10 +7,12 @@ import "../../componentsStyles.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import Modal from "react-overlays/Modal";
 import "../../Modal.css";
+import "../../componentsStyles.css";
 import { useState } from "react";
+import TablaUsuarios from "../../components/TablaUsuarios";
 
 
-function Clientes() {
+function Usuarios() {
     const [showModal, setShowModal] = useState(false);
   
     const renderBackdrop = (props) => <div className="backdrop" {...props} />;
@@ -30,11 +32,11 @@ function Clientes() {
         <div className="Page">
           <div className="ParteSuperior">
             <div style={{ padding: "0px 0px 20px 20px" }}><Navegacion/></div>
-            <h1 style={{ margin: "0" }}>LISTADO DE CLIENTES</h1>
+            <h1 style={{ margin: "0" }}>USUARIOS RECIPLAST</h1>
           </div>
           <div className="Caja">
             <CssBaseline />
-            <TablaClientes />
+            <TablaUsuarios />
             <div
               style={{
                 textAlign: "right",
@@ -42,37 +44,7 @@ function Clientes() {
                 padding: "20px 0 20px 0",
               }}
             >
-              <Modal
-                className="modal"
-                show={showModal}
-                onHide={handleClose}
-                renderBackdrop={renderBackdrop}
-              >
-                <div>
-                  <div className="modal-header">
-                    <div>
-                      <span className="close-button" onClick={handleClose}>
-                        x
-                      </span>
-                    </div>
-                  </div>
-                  <div className="modal-desc">
-                    <p>¿Seguro desea imprimir?</p>
-                  </div>
-                  <div className="modal-footer">
-                    <button className="secondary-button" onClick={handleClose}>
-                      Cancelar
-                    </button>
-                    <button className="primary-button" onClick={handleSuccess}>
-                      Aceptar
-                    </button>
-                  </div>
-                </div>
-              </Modal>
-  
-              <button className="Button" onClick={handlePrint}>
-                IMPRIMIR
-              </button>
+              
             </div>
           </div>
         </div>
@@ -80,4 +52,4 @@ function Clientes() {
     );
   }
   
-  export default Clientes;
+  export default Usuarios;

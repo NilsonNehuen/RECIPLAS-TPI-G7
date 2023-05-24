@@ -82,9 +82,9 @@ export default function ListadoProductosFabricados() {
                                 </div>
                             </Modal>
 
-                            <Button variant="outlined" onClick={handlePrint}>
-                                Imprimir
-                            </Button>
+                            <button className="Button" onClick={() => setShowModal(true)}>
+                                IMPRIMIR
+                            </button>
                         </div>
                     </div>
 

@@ -84,7 +84,7 @@ function BarraSuperior( {accion} ) {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Configuración">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Hasbulla" src= {MiImagen2} />
               </IconButton>

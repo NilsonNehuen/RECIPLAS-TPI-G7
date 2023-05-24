@@ -87,7 +87,7 @@ function Row(props) {
             {/* Detalle de cada fila */}
             <Box sx={{ margin: 1 }}>
 
-              <p><strong>Descripcion:</strong> {row.descripcion}</p>
+              <p><strong>Comentarios:</strong> {row.descripcion}</p>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
@@ -96,7 +96,6 @@ function Row(props) {
                     <TableCell align="center">Precio por kg</TableCell>
                     <TableCell align="center">Cantidad (kg)</TableCell>
                     <TableCell align="center">Total ($)</TableCell>
-
                   </TableRow>
                 </TableHead>
                 <TableBody>

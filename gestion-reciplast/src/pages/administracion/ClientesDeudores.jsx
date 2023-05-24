@@ -39,9 +39,9 @@ function ClientesDeudores() {
           }}
         >
           {" "}
-          <Button variant="outlined" onClick={() => setShowModal(true)}>
-            Imprimir
-          </Button>
+          <button className="Button" onClick={() => setShowModal(true)}>
+            IMPRIMIR
+          </button>
         </div>
       </div>
 

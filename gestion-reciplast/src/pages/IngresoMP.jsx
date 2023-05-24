@@ -1,13 +1,13 @@
-import TablaRegistrarPedido from "../../components/TablaRegistrarPedido";
-import Navegacion from "../../components/Navegacion";
+
+import TablaRegistrarPedido from "../components/TablaRegistrarPedido";
+import Navegacion from "../components/Navegacion";
 
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "../../componentsStyles.css";
-import { NavLink } from "react-router-dom";
+import RegistrarMP from "../components/RegistrarMP";
 
 function Datos() {
   let [dni, setdni] = React.useState("");
@@ -34,6 +34,11 @@ function Datos() {
     <React.Fragment>
       <CssBaseline />
       <div style={{ display: "inline", width: "100%", height: "100%" }}>
+        <div>
+          <h3 style={{ marginLeft: 5, textAlign: "left" }}>
+            Datos de Ingreso
+          </h3>
+        </div>
         <Box
           sx={{
             padding: "20px",
@@ -61,18 +66,9 @@ function Datos() {
                 fullWidth
                 enable
                 id="nombre"
-                label="Nombre y Apellido"
+                label="Proveedor"
                 value={nombre}
                 defaultValue="32000900"
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                enable
-                id="DireccionCliente"
-                label="Dirección"
-                value={direccion}
               />
             </Grid>
             <Grid item xs={4}>
@@ -93,96 +89,29 @@ function Datos() {
                 value={provincia}
               />
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                enable
-                id="TelefonoCliente"
-                label="Telefono"
-                value={telefono}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                enable
-                id="EmailCliente"
-                label="Correo Electronico"
-                value={email}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <NavLink to="/agregar-cliente">
-                <button className="Button">Registrar nuevo cliente</button>
-              </NavLink>
-            </Grid>
+     
+          </Grid>
+        </Box>
+      </div>
+      <div></div>
+    </React.Fragment>
+  );
+}
 
-          </Grid>
-        </Box>
-      </div>
-      <div></div>
-    </React.Fragment>
-  );
-}
-function DatosPedido() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <div style={{ display: "inline", width: "100%", height: "100%" }}>
-        <Box
-          sx={{
-            padding: "20px",
-            width: "100%",
-            minheight: "100%",
-          }}
-        >
-          <Grid
-            container
-            rowSpacing={2}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                enable
-                id="date"
-                label="Fecha de entrega estimada"
-                type="date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </div>
-      <div></div>
-    </React.Fragment>
-  );
-}
-function RegistrarPedido() {
+function IngresoMP() {
   return (
     <>
       <div className="Page">
-        <div className="ParteSuperior">
-          <div style={{ padding: "0px 0px 20px 20px" }}>
-            <Navegacion />
-          </div>
-          <h1 style={{ margin: "0" }}>REGISTRAR PEDIDO</h1>
+        <div style={{ width: "100%", paddingBottom: "30px" }}>
+          <h1 style={{ margin: "0" }}>REGISTRAR INGRESO MATERIA PRIMA</h1>
+          <Navegacion />
         </div>
         <div className="Caja">
-          <h3 style={{ marginLeft: 5, textAlign: "left" }}>
-            Datos de Clientes
-          </h3>
           <Datos />
-        </div>
-        <div className="Caja">
-          <h3 style={{ marginLeft: 5, textAlign: "left" }}>Datos de pedido</h3>
-          <DatosPedido />
         </div>
         <div className="Caja" style={{ margin: "20px" }}>
           <div className="Tabla">
-            <TablaRegistrarPedido />
+            <RegistrarMP />
           </div>{" "}
           <div style={{ textAlign: "right", width: "100%" }}>
             {" "}
@@ -195,4 +124,4 @@ function RegistrarPedido() {
   );
 }
 
-export default RegistrarPedido;
+export default IngresoMP;

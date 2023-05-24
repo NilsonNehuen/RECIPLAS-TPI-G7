@@ -12,6 +12,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 //import foto from "";
 import { Grid } from "@mui/material";
 
@@ -61,9 +62,12 @@ function BarraLateral({ campos, area }) {
                           to={submenu.link}
                           style={{ color: "black", textDecoration: "none" }}
                         >
-                          <MenuItem icon={<ReceiptOutlinedIcon />}>
-                            {submenu.nombre}
-                          </MenuItem>
+                    
+                            <MenuItem  icon={<FiberManualRecordIcon fontSize="small" />}>
+                              {submenu.nombre}
+                            </MenuItem>
+                        
+                          
                         </NavLink>
                       </Grid>
                     ))}

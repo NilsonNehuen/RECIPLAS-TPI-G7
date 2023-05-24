@@ -16,6 +16,7 @@ import dayjs from "dayjs";
 
 import Modal from "react-overlays/Modal";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function FechaInput(props) {
   return (
@@ -232,7 +233,7 @@ function DetallesPedidos() {
           <button className="Button" onClick={() => setShowModal(true)}>
             CANCELAR
           </button>
-          <button className="Button">MODIFICAR</button>
+          <NavLink to="/modificar-pedido"><button className="Button">MODIFICAR</button></NavLink>
           <button className="Button">FACTURAR</button>
           <div>
             <Modal
@@ -251,7 +252,7 @@ function DetallesPedidos() {
                   </div>
                 </div>
                 <div className="modal-desc">
-                  <p>¿Desea cancelar al cliente?</p>
+                  <p>¿Desea cancelar el pedido?</p>
                 </div>
                 <div className="modal-footer">
                   <button className="secondary-button" onClick={handleClose}>

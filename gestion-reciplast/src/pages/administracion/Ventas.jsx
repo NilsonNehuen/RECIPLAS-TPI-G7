@@ -71,9 +71,9 @@ function Ventas() {
               </div>
             </Modal>
 
-            <Button variant="outlined" onClick={handlePrint}>
-              Imprimir
-            </Button>
+            <button className="Button" onClick={handlePrint}>
+                IMPRIMIR
+              </button>
           </div>
         </div>
       </div>

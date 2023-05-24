@@ -1,14 +1,12 @@
 import React from "react";
-import TablaCompleta from "../components/TablaCompleta";
-import TablaMP from "../components/TablaMP";
+import Tabla from "../components/Tabla";
 import { useState } from "react";
 import Modal from "react-overlays/Modal";
-import { Button } from "@mui/material";
-
+import Navegacion from "../components/Navegacion";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const ListadoMP = () => {
-
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Backdrop JSX code
   const renderBackdrop = (props) => <div className="backdrop" {...props} />;
@@ -23,58 +21,59 @@ const ListadoMP = () => {
     setShowModal(true);
   };
 
-    return (
-        <div>
-            
-            <TablaCompleta titulo="Stock Materia Prima" />
-            <div
-                style={{
-                    textAlign: "right",
-                    width: "100%",
-                    padding: "20px 0 20px 0",
-                }}
-            >
-                <Modal
-                    className="modal"
-                    show={showModal}
-                    onHide={handleClose}
-                    renderBackdrop={renderBackdrop}
-                >
-                    <div>
-                        <div className="modal-header">
-                            <div>
-                                <span className="close-button" onClick={handleClose}>
-                                    x
-                                </span>
-                            </div>
-                        </div>
-                        <div className="modal-desc">
-                            <p>¿Seguro desea imprimir?</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button className="secondary-button" onClick={handleClose}>
-                                Cancelar
-                            </button>
-                            <button className="primary-button" onClick={handleSuccess}>
-                                Aceptar
-                            </button>
-                        </div>
-                    </div>
-                </Modal>
-
-                <Button variant="outlined" onClick={handlePrint}>
-                    Imprimir
-                </Button>
-            </div>
+  return (
+    <div className="Page">
+      <div className="ParteSuperior">
+        <div style={{ padding: "0px 0px 20px 20px" }}>
+          <Navegacion />
         </div>
+        <h1 style={{ margin: "0" }}>STOCK MATERIA PRIMA</h1>
+      </div>
+      <div className="Caja">
+        <CssBaseline />
+        <Tabla />
+        <div
+          style={{
+            textAlign: "right",
+            width: "100%",
+            padding: "20px 0 20px 0",
+          }}
+        >
+          <Modal
+            className="modal"
+            show={showModal}
+            onHide={handleClose}
+            renderBackdrop={renderBackdrop}
+          >
+            <div>
+              <div className="modal-header">
+                <div>
+                  <span className="close-button" onClick={handleClose}>
+                    x
+                  </span>
+                </div>
+              </div>
+              <div className="modal-desc">
+                <p>¿Seguro desea imprimir?</p>
+              </div>
+              <div className="modal-footer">
+                <button className="secondary-button" onClick={handleClose}>
+                  Cancelar
+                </button>
+                <button className="primary-button" onClick={handleSuccess}>
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </Modal>
 
-
-    )
-}
-
+          <button className="Button" onClick={() => setShowModal(true)}>
+            IMPRIMIR
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ListadoMP;
-
-
-
-// <TablaCompleta titulo= "Stock Materia Prima" />

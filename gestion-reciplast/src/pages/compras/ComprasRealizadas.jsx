@@ -5,6 +5,7 @@ import { useState } from "react";
 import Navegacion from "../../components/Navegacion";
 import CssBaseline from "@mui/material/CssBaseline";
 import Modal from "react-overlays/Modal";
+import "../../componentsStyles.css";
 
 function Buscador({ searchTerm, onSearchTermChange }) {
   return (
@@ -82,9 +83,9 @@ export default function ComprasRealizadas() {
             </div>
           </Modal>
 
-          <Button variant="outlined" onClick={handlePrint}>
-            Imprimir
-          </Button>
+          <button className="Button" onClick={handlePrint}>
+            REGISTRAR PAGO
+          </button>
         </div>
       </div>
     </div>

@@ -48,39 +48,53 @@ import DetallesPedidosProd from "./pages/DetallesPedidosProd";
 import IngresosMP from "./pages/IngresosMP";
 import DetallesProveedor from "./pages/ventas/DetallesProveedor";
 import ModificarProveedor from "./pages/ventas/ModificarProveedor";
+import RecyclingIcon from '@mui/icons-material/Recycling';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import TransferWithinAStationIcon from '@mui/icons-material/TransferWithinAStation';
+import SellIcon from '@mui/icons-material/Sell';
+import ReorderIcon from '@mui/icons-material/Reorder';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import ListadoPedidos from "./pages/ventas/ListadoPedidos2";
+import AgregarCliente from "./pages/compras/AgregarCliente";
+import AgregarProveedor from "./pages/compras/AgregarProveedor";
+import Usuarios from "./pages/administracion/Usuarios";
+import DetalleUsuario from "./pages/administracion/DetalleUsuario";
+import ModificarUsuario from "./pages/administracion/ModificarUsuario";
+import ModificarPedido from "./pages/ventas/ModificarPedido";
+
+
+import ViewListIcon from '@mui/icons-material/ViewList';
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "ingreso-materia-prima" } ]} ,
-              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <RecyclingIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "ingreso-materia-prima" } ]} ,
+              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <InventoryIcon /> },
+              { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <ViewListIcon /> }] , 
 
 	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
+			  { nombre: 'Clientes', link: "clientes", sub: true, icon: <ContactsOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
 																								  {nombre: "Ver Clientes", link: "clientes" } ]} ,
-																								  { nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Modificar Cliente', link: "modificar-cliente", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Detalles pedido', link: "detalles-pedidos", sub: true, icon: <HomeOutlinedIcon /> }, 
-			{ nombre: 'Detalles cliente', link: "detalles-cliente", sub: true, icon: <HomeOutlinedIcon /> },],
+			{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <TransferWithinAStationIcon /> },
+			{ nombre: 'Pedidos', link: "registrar-pedido", sub: false, icon: <ViewListIcon /> ,  submenus: [ {nombre: "Ver pedidos", link: "listado-pedidos" }, 
+																												{nombre: "Agregar pedido", link: "registrar-pedido" } ] }, ],
 			  
 	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
-					{ nombre: 'Productos fabricados', link: "productos-fabricados-adm", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
+					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <RecyclingIcon /> },
+					{ nombre: 'Productos fabricados', link: "productos-fabricados-adm", sub: true, icon: <InventoryIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
 																														{nombre: "Agregar", link: "registrar-producto" } ]},
-					{ nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
-					{ nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
-					{ nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
+					{ nombre: 'Compras', link: "compras", sub: true, icon: <ShoppingCartIcon /> },
+					{ nombre: 'Ventas', link: "ventas", sub: true, icon: <SellIcon /> },
+					{ nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <PeopleOutlinedIcon />, submenus: [ {nombre: "Ver Usuarios", link: "listado-usuario" }, 
 																																		{nombre: "Agregar", link: "nuevo-usuario" } ]},
-				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
+				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <ContactsOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
 				{nombre: "Deudores", link: "deudores" } ] },
-				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
+				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <TransferWithinAStationIcon /> },],
 
 
 
 
 	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <ShoppingCartIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
 			  
 }
 
@@ -94,8 +108,6 @@ const usuarios = [{ nombre: "Pepe", area: "administracion", contrasena: "pepe" }
 
 function App() {
 	document.title = 'Gestion Reciplast';
-
-
 
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
@@ -157,15 +169,19 @@ function App() {
 			  <Route path="compras-realizadas" element={<ComprasRealizadas /> } />
 				<Route path="registrar-pedido" element={<RegistrarPedido />} />
 				<Route path="modificar-cliente" element={<ModificarCliente />} />
-				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
+				<Route path="listado-pedidos" element={<ListadoPedidos />} />
 				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
 				<Route path="detalles-pedidos-prod" element={<DetallesPedidosProd />} />
 				<Route path="detalles-cliente" element={<DetallesCliente />} />
 				<Route path="ingreso-materia-prima" element={<IngresosMP />} />
 				<Route path="detalles-proveedor" element={<DetallesProveedor />} />
 				<Route path="modificar-proveedor" element={<ModificarProveedor />} />
-				
-				
+				<Route path="agregar-proveedor" element={<AgregarProveedor />} />
+				<Route path="agregar-cliente" element={<AgregarCliente />} />
+				<Route path="listado-usuario" element={<Usuarios />} />
+				<Route path="detalle-usuario" element={<DetalleUsuario />} />
+				<Route path="modificar-usuario" element={<ModificarUsuario />} />
+				<Route path="modificar-pedido" element={<ModificarPedido />} />
 
 
 
